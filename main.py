@@ -3,25 +3,26 @@ import requests
 import csv
 
 # method to scrap data
-def scrap(soup,c):
+def scrap(soup,c,a):
     #fetching data
     try:
         title=soup.find('span',class_='a-size-large product-title-word-break').text
         # year=soup.find_all('td', class_='URwL2w col col-9-12')
         rating=soup.find('span',class_='a-icon-alt').text
         # reviews=soup.find('span',class_='_2_R_DZ').text
-        # seller_name=soup.find('div',class_='_1RLviY').text
-        # actual_price=soup.find('div', class_='_3I9_wc _2p6lqe').text
-        # cost=soup.find('div', class_='_30jeq3 _16Jk6d').text
+        # # actual_price=soup.find('span',class_='a-price a-text-price a-size-base').text
+        # c=soup.find_all('td', class_='a-span3')
+        # color=c.find('span',class_='a-size-base po-break-word').text
+        cost=soup.find('span', class_='a-offscreen').text
         # picture_rating=soup.find_all('text',class_='_2Ix0io')
         # customer_review=soup.find_all('p',class_='_2-N8zT')
         # printing all the data
         print(title)
-        print(rating)
+        # print(rating)
         # print(reviews)
-        # print(seller_name)
+        # print(color)
         # print(actual_price)
-        # print(cost)
+        print(cost)
         # overall_rating=''
         # for i in picture_rating:
         #     overall_rating=overall_rating+' '+i.get_text()
@@ -44,21 +45,26 @@ def scrap(soup,c):
     #         elif i==59:
     #             e=year[i].get_text()
     #         else: continue
-        List=[title,rating]
+        if(rating[0].isdigit()==True):
+            ra=rating[:3]
+        else:
+            ra=""
+        print(ra)
+        List=[title.strip(),ra,cost,"https://www.amazon.com"+a]
         if c==0:
             # fetching data into csv file
-            with open('data.csv', 'w',encoding="utf-8",newline='') as f_object:
+            with open('walmart_data.csv', 'w',encoding="utf-8",newline='') as f_object:
                 writer_object = csv.writer(f_object)
 
                 # Pass the list as an argument into
                 # the writerow()
-                writer_object.writerow(List)
+                writer_object.writerow(['Title','Rating','Cost','Links'])
                 print('row inserted')
                 # Close the file object
                 f_object.close()
                 return 0
         else:
-            with open('data.csv', 'a',encoding="utf-8",newline='') as f_object:
+            with open('walmart_data.csv', 'a',encoding="utf-8",newline='') as f_object:
                 writer_object = csv.writer(f_object)
 
                 # Pass the list as an argument into
@@ -95,7 +101,7 @@ if __name__ == '__main__':
     # The webpage URL
     URL = "https://www.amazon.com"
     departments = {
-        "buds" : "https://www.amazon.com/electronics-store/b/ref=dp_bc_aui_C_1?ie=UTF8&node=172282",
+        "Electronics" : "https://www.amazon.com/electronics-store/b/ref=dp_bc_aui_C_1?ie=UTF8&node=172282",
         "clothing" : "https://www.amazon.com/amazon-fashion/b/ref=dp_bc_aui_C_1?ie=UTF8&node=7141123011"
     }
     subsections=list(departments.keys())
@@ -113,30 +119,29 @@ if __name__ == '__main__':
         a=pullLinks(departments[subsections[i]],classname[i])
         linkedlist.append(a)
     print(linkedlist)
+    count = 0;
+    for j in range(0,len(linkedlist)):
+        for k in range(0,len(linkedlist[j])):
+            a = URL + linkedlist[j][k]
+            links_list = pullLinks(a, "a-link-normal s-underline-text s-underline-link-text s-link-style a-text-normal")
+            #page navigation logic
+            for i in range(1, 5):
+            # a = URL + linkedlist[0][0]
+                items = a + '&page=' + str(i)
+                links_list=pullLinks(a, "a-link-normal s-underline-text s-underline-link-text s-link-style a-text-normal")
 
-    a = URL + linkedlist[0][0]
-    links_list = pullLinks(a, "a-link-normal s-underline-text s-underline-link-text s-link-style a-text-normal")
+            print('Started')
+            for link in links_list:
+                if (link.startswith("https")):
+                    webpage1=requests.get(link,headers=HEADERS)
+                else:
+                    webpage1 = requests.get("https://www.amazon.com" + link,headers=HEADERS)
+                new_soup = BeautifulSoup(webpage1.content, "html.parser")
+                scrap(new_soup, count,link)
 
-
-    #page navigation logic
-    count=0;
-    for i in range(1, 2):
-        a = URL + linkedlist[0][0]
-        items = a + '&page=' + str(i)
-        links_list=pullLinks(a, "a-link-normal s-underline-text s-underline-link-text s-link-style a-text-normal")
-
-        print('Started')
-        for link in links_list:
-            if (link.startswith("https")):
-                webpage1=requests.get(link,headers=HEADERS)
-            else:
-                webpage1 = requests.get("https://www.amazon.com" + link,headers=HEADERS)
-            new_soup = BeautifulSoup(webpage1.content, "html.parser")
-            scrap(new_soup, count)
-
-            count = count + 1
-            print()
-            print("finish", count)
+                count = count + 1
+                print()
+                print("finish", count)
 
 
 
