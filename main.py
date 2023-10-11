@@ -7,44 +7,13 @@ def scrap(soup,c,a):
     #fetching data
     try:
         title=soup.find('span',class_='a-size-large product-title-word-break').text
-        # year=soup.find_all('td', class_='URwL2w col col-9-12')
         rating=soup.find('span',class_='a-icon-alt').text
-        # reviews=soup.find('span',class_='_2_R_DZ').text
-        # # actual_price=soup.find('span',class_='a-price a-text-price a-size-base').text
-        # c=soup.find_all('td', class_='a-span3')
-        # color=c.find('span',class_='a-size-base po-break-word').text
         cost=soup.find('span', class_='a-offscreen').text
-        # picture_rating=soup.find_all('text',class_='_2Ix0io')
-        # customer_review=soup.find_all('p',class_='_2-N8zT')
         # printing all the data
         print(title)
-        # print(rating)
-        # print(reviews)
-        # print(color)
-        # print(actual_price)
+        print(rating)
         print(cost)
-        # overall_rating=''
-        # for i in picture_rating:
-        #     overall_rating=overall_rating+' '+i.get_text()
-        # print(overall_rating.strip())
-    #     cust_top_review=''
-    #     for j in range(0,len(customer_review)):
-    #         if j<3:
-    #             cust_top_review=cust_top_review+','+customer_review[j].get_text()
-    #     print(cust_top_review)
-    #     a='';b='';c='';d='';e=''
-    #     for i in range(0,len(year)):
-    #         if i==3:
-    #             a=year[i].get_text()
-    #         elif i==10:
-    #             b=year[i].get_text()
-    #         elif i==28:
-    #             c=year[i].get_text()
-    #         elif i==29:
-    #             d=year[i].get_text()
-    #         elif i==59:
-    #             e=year[i].get_text()
-    #         else: continue
+
         if(rating[0].isdigit()==True):
             ra=rating[:3]
         else:
