@@ -15,6 +15,7 @@ with open('data2.csv', 'r',encoding='utf-8') as file2:
 matches = []
 differences = []
 
+# Based on title and price
 for row1 in data1:
     for row2 in data2:
         if row1[0] == row2[0]:
@@ -24,6 +25,22 @@ for row1 in data1:
             else:
              print("Title: ",row1[0])
              print("Price: ",row1[2])  
+            break
+    else:
+        differences.append(row1)
+
+# Based on ratings
+for row1 in data1:
+    for row2 in data2:
+        if row1[0] == row2[0]:
+            if row1[3] > row2[3]:
+                print("Title: ",row1[0])
+                print("Price: ",row2[2])  
+                print("Rating: ",row2[3])
+            else:
+             print("Title: ",row1[0])
+             print("Price: ",row1[2]) 
+             print("Rating: ",row1[3]) 
             break
     else:
         differences.append(row1)
