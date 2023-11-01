@@ -19,7 +19,7 @@ def scrap(soup,c,a):
         List=[title.strip(),ra,cost,"https://www.walmart.com"+a]
         if c==0:
             # fetching data into csv file
-            with open('Amazon_data.csv', 'w',encoding="utf-8",newline='') as f_object:
+            with open('Walmart_data.csv', 'w',encoding="utf-8",newline='') as f_object:
                 writer_object = csv.writer(f_object)
 
                 # Pass the list as an argument into
@@ -30,7 +30,7 @@ def scrap(soup,c,a):
                 f_object.close()
                 return 0
         else:
-            with open('Amazon_data.csv', 'a',encoding="utf-8",newline='') as f_object:
+            with open('Walmart_data.csv', 'a',encoding="utf-8",newline='') as f_object:
                 writer_object = csv.writer(f_object)
 
                 # Pass the list as an argument into
@@ -85,29 +85,29 @@ if __name__ == '__main__':
         a=pullLinks(departments[subsections[i]],classname[i])
         linkedlist.append(a)
     print(linkedlist)
-    count = 0;
-    # for j in range(0,len(linkedlist)):
-    #     for k in range(0,len(linkedlist[j])):
-    #         a = URL + linkedlist[j][k]
-    #         links_list = pullLinks(a, "absolute w-100 h-100 z-1 hide-sibling-opacity")
-    #         #page navigation logic
-    #         for i in range(1, 5):
-    #         # a = URL + linkedlist[0][0]
-    #             items = a + '&page=' + str(i)
-    #             links_list=pullLinks(a, "absolute w-100 h-100 z-1 hide-sibling-opacity")
-    #
-    #         print('Started')
-    #         for link in links_list:
-    #             if (link.startswith("https")):
-    #                 webpage1=requests.get(link,headers=HEADERS)
-    #             else:
-    #                 webpage1 = requests.get("https://www.walmart.com" + link,headers=HEADERS)
-    #             new_soup = BeautifulSoup(webpage1.content, "html.parser")
-    #             scrap(new_soup, count,link)
-    #
-    #             count = count + 1
-    #             print()
-    #             print("finish", count)
+    count = 0
+    for j in range(0,len(linkedlist)):
+        for k in range(0,len(linkedlist[j])):
+            a = URL + linkedlist[j][k]
+            links_list = pullLinks(a, "absolute w-100 h-100 z-1 hide-sibling-opacity")
+            #page navigation logic
+            for i in range(1, 5):
+            # a = URL + linkedlist[0][0]
+                items = a + '&page=' + str(i)
+                links_list=pullLinks(a, "absolute w-100 h-100 z-1 hide-sibling-opacity")
+
+            print('Started')
+            for link in links_list:
+                if (link.startswith("https")):
+                    webpage1=requests.get(link,headers=HEADERS)
+                else:
+                    webpage1 = requests.get("https://www.walmart.com" + link,headers=HEADERS)
+                new_soup = BeautifulSoup(webpage1.content, "html.parser")
+                scrap(new_soup, count,link)
+
+                count = count + 1
+                print()
+                print("finish", count)
 
 
 

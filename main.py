@@ -10,19 +10,21 @@ def scrap(soup,c,a):
         rating=soup.find('span',class_='a-icon-alt').text
         cost=soup.find('span', class_='a-offscreen').text
         # printing all the data
-        print(title)
         print(rating)
         print(cost)
-
+        t=title.split(",")[0]
+        if(len(t)>1):
+            t = t[0:t[0:40].rindex(" ")]
+        print(t)
         if(rating[0].isdigit()==True):
             ra=rating[:3]
         else:
             ra=""
         print(ra)
-        List=[title.strip(),ra,cost,"https://www.amazon.com"+a]
+        List=[t.strip(),ra,cost,"https://www.amazon.com"+a]
         if c==0:
             # fetching data into csv file
-            with open('walmart_data.csv', 'w',encoding="utf-8",newline='') as f_object:
+            with open('Amazon_data.csv', 'w',encoding="utf-8",newline='') as f_object:
                 writer_object = csv.writer(f_object)
 
                 # Pass the list as an argument into
@@ -33,7 +35,7 @@ def scrap(soup,c,a):
                 f_object.close()
                 return 0
         else:
-            with open('walmart_data.csv', 'a',encoding="utf-8",newline='') as f_object:
+            with open('Amazon_data.csv', 'a',encoding="utf-8",newline='') as f_object:
                 writer_object = csv.writer(f_object)
 
                 # Pass the list as an argument into
