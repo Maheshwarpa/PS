@@ -17,6 +17,7 @@ class ViewController: UIViewController {
     var pss=""
     @IBOutlet weak var usernameTF: UITextField!
     
+    @IBOutlet weak var resetBTN: UIButton!
     @IBOutlet weak var loginBTN: UIButton!
     @IBOutlet weak var passwordTF: UITextField!
     override func viewDidLoad() {
@@ -26,7 +27,7 @@ class ViewController: UIViewController {
         
         self.passwordTF.isEnabled=false
                self.loginBTN.isEnabled=false
-                //self.resetBTN.isEnabled=false
+                self.resetBTN.isEnabled=false
                 
                 
                 guard let uname=usernameTF.text,!uname.isEmpty else{
@@ -58,7 +59,7 @@ class ViewController: UIViewController {
         
         if(sender.isEnabled){
             //self.passwordTF.isEnabled=true
-            // self.resetBTN.isEnabled=true
+             self.resetBTN.isEnabled=true
             guard let uname=usernameTF.text,!uname.isEmpty else{
                 return
             }
@@ -83,8 +84,8 @@ class ViewController: UIViewController {
         
         let animatedGradient = AnimatedGradientView(frame: view.bounds)
         animatedGradient.direction = .up
-        animatedGradient.animationValues = [(colors: ["#2BC0E4", "#EAECC6"], .up, .axial),
-        (colors: ["#833ab4", "#fd1d1d", "#fcb045"], .right, .axial),
+        animatedGradient.animationValues = [(colors: ["#6496A2", "#29D954"], .up, .axial),
+        (colors: ["#D154DE", "#31F264", "#A728EE"], .right, .axial),
         (colors: ["#003973", "#E5E5BE"], .down, .axial),
         (colors: ["#1E9600", "#FFF200", "#FF0000"], .left, .axial)]
         view.insertSubview(animatedGradient, at: 0)
@@ -93,7 +94,7 @@ class ViewController: UIViewController {
     
     @IBAction func login(_ sender: UIButton) {
         
-        if(sender.isEnabled){
+        if(sender.tag==0){
             if(user.elementsEqual("admin")&&(pss.elementsEqual("12345"))){
                 let alert=UIAlertController(title: "PriceSpy", message: "Welcome to the world of PriceSpy 🤩", preferredStyle:UIAlertController.Style.alert)
                 alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default))
@@ -108,6 +109,18 @@ class ViewController: UIViewController {
         
         
     }
+    
+    @IBAction func reset(_ sender: UIButton) {
+        if(sender.tag==1){
+            self.usernameTF.text=""
+            self.passwordTF.text=""
+            self.passwordTF.isEnabled=false
+            self.resetBTN.isEnabled=false
+            self.loginBTN.isEnabled=false
+            //self.usernameTF.isEnabled=false
+        }
+    }
+    
     
 
 }

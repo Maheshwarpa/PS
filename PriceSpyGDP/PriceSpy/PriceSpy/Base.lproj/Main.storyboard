@@ -60,25 +60,38 @@
                                         <rect key="frame" x="0.0" y="631.33333333333337" width="393" height="43.666666666666629"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cbH-5N-5yG">
-                                                <rect key="frame" x="0.0" y="0.0" width="125.66666666666667" height="43.666666666666664"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="92.333333333333329" height="43.666666666666664"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HXU-TI-lXS">
-                                                <rect key="frame" x="133.66666666666666" y="0.0" width="125.66666666666666" height="43.666666666666664"/>
+                                                <rect key="frame" x="100.33333333333334" y="0.0" width="92.333333333333343" height="43.666666666666664"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="filled" title="Login">
                                                     <color key="baseForegroundColor" systemColor="systemYellowColor"/>
-                                                    <color key="baseBackgroundColor" systemColor="systemFillColor"/>
+                                                    <color key="baseBackgroundColor" systemColor="separatorColor"/>
                                                 </buttonConfiguration>
                                                 <connections>
                                                     <action selector="login:" destination="BYZ-38-t0r" eventType="touchUpInside" id="c6a-9I-CWN"/>
                                                 </connections>
                                             </button>
+                                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Px5-qC-0RA" userLabel="Reset">
+                                                <rect key="frame" x="200.66666666666666" y="0.0" width="91.999999999999972" height="43.666666666666664"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="filled" title="Reset">
+                                                    <color key="baseForegroundColor" systemColor="systemYellowColor"/>
+                                                    <color key="baseBackgroundColor" systemColor="separatorColor"/>
+                                                </buttonConfiguration>
+                                                <connections>
+                                                    <action selector="login:" destination="BYZ-38-t0r" eventType="touchUpInside" id="zb6-tW-vOQ"/>
+                                                    <action selector="reset:" destination="BYZ-38-t0r" eventType="touchUpInside" id="wVc-6Q-FHW"/>
+                                                </connections>
+                                            </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ieT-a3-dEw">
-                                                <rect key="frame" x="267.33333333333331" y="0.0" width="125.66666666666669" height="43.666666666666664"/>
+                                                <rect key="frame" x="300.66666666666669" y="0.0" width="92.333333333333314" height="43.666666666666664"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -113,6 +126,7 @@
                         <outlet property="loginBTN" destination="HXU-TI-lXS" id="zYK-BY-Cgi"/>
                         <outlet property="logoAnimationView" destination="ddl-vv-a8L" id="j3o-fB-1Lg"/>
                         <outlet property="passwordTF" destination="Fly-wC-Kfz" id="xPB-xU-6ae"/>
+                        <outlet property="resetBTN" destination="Px5-qC-0RA" id="3Ub-I3-OI1"/>
                         <outlet property="usernameTF" destination="GmI-d5-tfC" id="zzZ-RC-uge"/>
                     </connections>
                 </viewController>
@@ -122,11 +136,11 @@
         </scene>
     </scenes>
     <resources>
+        <systemColor name="separatorColor">
+            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.28999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemFillColor">
-            <color red="0.47058823529411764" green="0.47058823529411764" blue="0.50196078431372548" alpha="0.20000000000000001" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemYellowColor">
             <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
