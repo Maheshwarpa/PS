@@ -20,39 +20,80 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="DLG-AN-bpe" userLabel="BigContainerSV">
                                 <rect key="frame" x="0.0" y="59" width="393" height="759"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Enu-Yp-Y7l">
-                                        <rect key="frame" x="0.0" y="0.0" width="393" height="303.66666666666669"/>
-                                    </imageView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" distribution="fillEqually" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="o4W-fb-0sM" userLabel="User/Pass">
-                                        <rect key="frame" x="0.0" y="311.66666666666669" width="393" height="169.33333333333331"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PriceSpy" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H3R-Uo-wz1">
+                                        <rect key="frame" x="0.0" y="0.0" width="393" height="76"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ddl-vv-a8L" customClass="LottieAnimationView" customModule="Lottie">
+                                        <rect key="frame" x="0.0" y="83.999999999999972" width="393" height="379.33333333333326"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="animationName" value="Animation"/>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="o4W-fb-0sM" userLabel="User/Pass">
+                                        <rect key="frame" x="0.0" y="471.33333333333337" width="393" height="152"/>
                                         <subviews>
-                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GmI-d5-tfC">
-                                                <rect key="frame" x="0.0" y="0.0" width="393" height="80.666666666666671"/>
+                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GmI-d5-tfC">
+                                                <rect key="frame" x="0.0" y="0.0" width="393" height="72"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" textContentType="username"/>
+                                                <connections>
+                                                    <action selector="userAction:" destination="BYZ-38-t0r" eventType="editingChanged" id="Mha-Au-xiZ"/>
+                                                </connections>
                                             </textField>
-                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Fly-wC-Kfz">
-                                                <rect key="frame" x="0.0" y="88.666666666666629" width="393" height="80.666666666666686"/>
+                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Fly-wC-Kfz">
+                                                <rect key="frame" x="0.0" y="80" width="393" height="72"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
+                                                <connections>
+                                                    <action selector="passAction:" destination="BYZ-38-t0r" eventType="editingChanged" id="xdn-nQ-jv9"/>
+                                                </connections>
                                             </textField>
                                         </subviews>
                                     </stackView>
-                                    <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HXU-TI-lXS">
-                                        <rect key="frame" x="0.0" y="489" width="393" height="34.333333333333371"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="filled" title="Button"/>
-                                    </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cbH-5N-5yG">
-                                        <rect key="frame" x="0.0" y="531.33333333333337" width="393" height="227.66666666666663"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="fmz-h4-0qK">
+                                        <rect key="frame" x="0.0" y="631.33333333333337" width="393" height="43.666666666666629"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cbH-5N-5yG">
+                                                <rect key="frame" x="0.0" y="0.0" width="125.66666666666667" height="43.666666666666664"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HXU-TI-lXS">
+                                                <rect key="frame" x="133.66666666666666" y="0.0" width="125.66666666666666" height="43.666666666666664"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="filled" title="Login">
+                                                    <color key="baseForegroundColor" systemColor="systemYellowColor"/>
+                                                    <color key="baseBackgroundColor" systemColor="systemFillColor"/>
+                                                </buttonConfiguration>
+                                            </button>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ieT-a3-dEw">
+                                                <rect key="frame" x="267.33333333333331" y="0.0" width="125.66666666666669" height="43.666666666666664"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d9O-oJ-fVQ">
+                                        <rect key="frame" x="0.0" y="683" width="393" height="76"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="Enu-Yp-Y7l" firstAttribute="height" secondItem="DLG-AN-bpe" secondAttribute="height" multiplier="0.4" id="bPe-OC-j1E"/>
-                                    <constraint firstItem="cbH-5N-5yG" firstAttribute="height" secondItem="DLG-AN-bpe" secondAttribute="height" multiplier="0.3" id="sim-us-m52"/>
+                                    <constraint firstItem="H3R-Uo-wz1" firstAttribute="height" secondItem="DLG-AN-bpe" secondAttribute="height" multiplier="0.1" id="E9c-CW-Bht"/>
+                                    <constraint firstItem="o4W-fb-0sM" firstAttribute="height" secondItem="DLG-AN-bpe" secondAttribute="height" multiplier="0.2" id="LFa-dC-7Tf"/>
+                                    <constraint firstItem="ddl-vv-a8L" firstAttribute="height" secondItem="DLG-AN-bpe" secondAttribute="height" multiplier="0.5" id="UDX-rd-aIx"/>
+                                    <constraint firstItem="d9O-oJ-fVQ" firstAttribute="height" secondItem="DLG-AN-bpe" secondAttribute="height" multiplier="0.1" id="dqC-WC-EFk"/>
                                 </constraints>
                             </stackView>
                         </subviews>
@@ -65,6 +106,12 @@
                             <constraint firstItem="DLG-AN-bpe" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Hof-mh-K8f"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="loginBTN" destination="HXU-TI-lXS" id="zYK-BY-Cgi"/>
+                        <outlet property="logoAnimationView" destination="ddl-vv-a8L" id="j3o-fB-1Lg"/>
+                        <outlet property="passwordTF" destination="Fly-wC-Kfz" id="xPB-xU-6ae"/>
+                        <outlet property="usernameTF" destination="GmI-d5-tfC" id="zzZ-RC-uge"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -74,6 +121,12 @@
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemFillColor">
+            <color red="0.47058823529411764" green="0.47058823529411764" blue="0.50196078431372548" alpha="0.20000000000000001" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemYellowColor">
+            <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
