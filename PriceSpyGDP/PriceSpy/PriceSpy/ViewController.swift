@@ -13,6 +13,8 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var logoAnimationView: LottieAnimationView!
     var name=""
+    var user=""
+    var pss=""
     @IBOutlet weak var usernameTF: UITextField!
     
     @IBOutlet weak var loginBTN: UIButton!
@@ -44,6 +46,7 @@ class ViewController: UIViewController {
                     guard let pass=self.passwordTF.text,!pass.isEmpty else{
                         return
                     }
+            pss=pass
                     if(pass.elementsEqual("12345")&&(name.elementsEqual("admin"))){
                         self.loginBTN.isEnabled=true
                         
@@ -60,6 +63,7 @@ class ViewController: UIViewController {
                 return
             }
             name=uname
+            user=uname
             if(uname.elementsEqual("admin")){
                 self.passwordTF.isEnabled=true
             }
@@ -85,7 +89,26 @@ class ViewController: UIViewController {
         (colors: ["#1E9600", "#FFF200", "#FF0000"], .left, .axial)]
         view.insertSubview(animatedGradient, at: 0)
     }
-
+    
+    
+    @IBAction func login(_ sender: UIButton) {
+        
+        if(sender.isEnabled){
+            if(user.elementsEqual("admin")&&(pss.elementsEqual("12345"))){
+                let alert=UIAlertController(title: "PriceSpy", message: "Welcome to the world of PriceSpy 🤩", preferredStyle:UIAlertController.Style.alert)
+                alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default))
+                self.present(alert,animated: true)
+            }
+            else{
+                let alert=UIAlertController(title: "PriceSpy", message: "Please check your username/password ❌", preferredStyle:UIAlertController.Style.alert)
+                alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default))
+                self.present(alert,animated: true)
+            }
+        }
+        
+        
+    }
+    
 
 }
 
