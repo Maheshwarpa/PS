@@ -1,48 +1,43 @@
-import csv
-import openpyxl
+import pandas as pd
 
-# Open and read the first CSV file
-with open('data1.csv', 'r', encoding='utf-8') as file1:
-    reader1 = csv.reader(file1)
-    data1 = list(reader1)
+# Read the CSV file into a pandas DataFrame
+csv_file_path = 'data1.csv'
+df = pd.read_csv(csv_file_path)
 
-# Open and read the second CSV file
-with open('data2.csv', 'r',encoding='utf-8') as file2:
-    reader2 = csv.reader(file2)
-    data2 = list(reader2)
+# Save the DataFrame to an Excel file
+excel_file_path = 'data1.xlsx'
+df.to_excel(excel_file_path, index=False)
 
-# Compare based on a common column (e.g., the first column)
-matches = []
-differences = []
+# Read the CSV file into a pandas DataFrame
+csv_file_path = 'data2.csv'
+df = pd.read_csv(csv_file_path)
 
-# Based on title and price
-for row1 in data1:
-    for row2 in data2:
-        if row1[0] == row2[0]:
-            if row1[2] > row2[2]:
-                print("Title: ",row1[0])
-                print("Price: ",row2[2])  
-            else:
-             print("Title: ",row1[0])
-             print("Price: ",row1[2])  
-            break
-    else:
-        differences.append(row1)
+# Save the DataFrame to an Excel file
+excel_file_path = 'data2.xlsx'
+df.to_excel(excel_file_path, index=False)
 
-# Based on ratings
-for row1 in data1:
-    for row2 in data2:
-        if row1[0] == row2[0]:
-            if row1[3] > row2[3]:
-                print("Title: ",row1[0])
-                print("Price: ",row2[2])  
-                print("Rating: ",row2[3])
-            else:
-             print("Title: ",row1[0])
-             print("Price: ",row1[2]) 
-             print("Rating: ",row1[3]) 
-            break
-    else:
-        differences.append(row1)
+# Read the first Excel sheet
+df1 = pd.read_excel('data1.xlsx')
 
+# Read the second Excel sheet
+df2 = pd.read_excel('data2.xlsx')
+
+# # Merge the two dataframes based on the 'Rating' column
+# merged_df = pd.merge(df1, df2, on='Ratings', how='inner')
+
+# # Save the merged data to a new Excel sheet
+# merged_df.to_excel('compared_data.xlsx', index=False)
+
+# Merge the two dataframes on the 'Title' column
+merged_df = pd.merge(df1, df2, on='Title', suffixes=('Sheet1', 'Sheet2'))
+print(merged_df.columns)
+
+# For each row, select the highest rating between the two sheets
+merged_df['Highest_Rating'] = merged_df[['RatingsSheet1', 'RatingsSheet2']].max(axis=1)
+
+# Select only the columns you want to keep in the new sheet
+result_df = merged_df[['Title', 'Highest_Rating', 'PriceSheet1', 'PriceSheet2']]
+
+# Save the compared data to a new Excel sheet
+result_df.to_excel("compared_data.xlsx", index=False)
 
